@@ -35,6 +35,7 @@ internal class Program
                 await StoreContextSeed.SeedAsync(context);
             }
         }
+        app.UseStaticFiles();
         app.UseHttpsRedirection();
 
         app.UseAuthorization();
