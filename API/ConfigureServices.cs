@@ -26,11 +26,12 @@ namespace API
                 options.AddPolicy("CorsPolicy",
                     builder => builder
                     .AllowAnyOrigin()
-                    .AllowAnyHeader()
+                    .AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200")
                     .AllowAnyMethod()
                     .AllowAnyMethod()
                     );
             });
+            
            
 
             return services;

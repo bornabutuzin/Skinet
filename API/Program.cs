@@ -39,7 +39,7 @@ internal class Program
         app.UseStatusCodePagesWithReExecute("/errors/{0}");
         app.UseStaticFiles();
         app.UseHttpsRedirection();
-
+        app.UseCors("CorsPolicy");
         app.UseAuthorization();
 
         app.MapControllers();
