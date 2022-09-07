@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
 using API;
 using Infrastructure;
+using API.MiddleWare;
 
 internal class Program
 {
@@ -19,7 +20,7 @@ internal class Program
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
         var app = builder.Build();
-
+        app.UseMiddleware<ExceptionMiddleware>();
         // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())
         {
@@ -35,6 +36,7 @@ internal class Program
                 await StoreContextSeed.SeedAsync(context);
             }
         }
+        app.UseStatusCodePagesWithReExecute("/errors/{0}");
         app.UseStaticFiles();
         app.UseHttpsRedirection();
 

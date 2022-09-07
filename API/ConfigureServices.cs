@@ -7,6 +7,8 @@ using Infrastructure.Data;
 using Microsoft.OpenApi.Models;
 using AutoMapper;
 using API.Helpers;
+using Microsoft.AspNetCore.Mvc;
+using API.Errors;
 
 namespace API
 {
@@ -29,6 +31,8 @@ namespace API
                     .AllowAnyMethod()
                     );
             });
+           
+
             return services;
         }
     }
