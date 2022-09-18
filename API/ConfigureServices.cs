@@ -24,9 +24,9 @@ namespace API
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy",
-                    builder => builder
+                    policy => policy
                     .AllowAnyOrigin()
-                    .AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200")
+                    .AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200/","https://localhost:3000")
                     .AllowAnyMethod()
                     .AllowAnyMethod()
                     );

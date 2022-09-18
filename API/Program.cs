@@ -5,9 +5,11 @@ using Microsoft.Extensions.Hosting;
 using API;
 using Infrastructure;
 using API.MiddleWare;
+using Microsoft.AspNetCore.Cors;
 
 internal class Program
 {
+    [EnableCors("CorsPolicy")]
     private static async Task Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
@@ -19,6 +21,14 @@ internal class Program
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
+        builder.Services.AddCors(opt =>
+    {
+        opt.AddPolicy("CorsPolicy", builder =>
+        {
+            builder.WithOrigins("https://localhost:4200","https://localhost:3000").AllowAnyMethod().AllowAnyHeader();
+        });
+    });
+
         var app = builder.Build();
         app.UseMiddleware<ExceptionMiddleware>();
         // Configure the HTTP request pipeline.

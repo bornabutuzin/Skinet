@@ -1,21 +1,27 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
+import { IPagination } from './models/pagination';
+import { IProduct } from './models/product';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   title = 'Skinet';
-
-  constructor(private http:HttpClient) {}
-
+  products:IProduct[];
+  
+  constructor(private http:HttpClient){}
   ngOnInit(): void {
-    this.http.get('http://localhost:5075/api/products').subscribe((response: any) =>{
-      console.log(response);
-    }, error =>{
-      console.log(error);
-    });
+    this.http.get('https://localhost:7064/api/products?pageSize=50').subscribe((response: IPagination)=>
+    { 
+      this.products = response.data;
+
+    },error =>{
+    console.log(error);
+  
+   });
   }
+  
 }

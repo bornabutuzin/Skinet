@@ -72,7 +72,6 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "browserTarget": "client:build",
-            "proxyConfig": "src/proxy.conf.json",
             "sslKey":"ssl/server.key",
             "sslCert":"ssl/server.crt",
             "ssl":true
@@ -114,5 +113,7 @@
       }
     }
   },
-  "defaultProject": "client"
+  "cli": {
+    "analytics": false
+  }
 }
