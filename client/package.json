@@ -20,10 +20,14 @@
     "@angular/router": "^14.2.0",
     "boostrap": "^2.0.0",
     "bootstrap": "^5.2.1",
+    "bootswatch": "^5.2.1",
     "font-awesome": "^4.7.0",
     "ngx-bootstrap": "^9.0.0",
+    "ngx-spinner": "^14.0.0",
+    "ngx-toastr": "^15.0.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
+    "xng-breadcrumb": "^8.0.2",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
